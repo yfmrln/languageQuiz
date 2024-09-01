@@ -19,7 +19,7 @@ $(document).ready(function () {
             },
             success: function (data) {
                 currentQuestion = data;
-                if(currentQuestion[questionLanguage] == null) {
+                if(currentQuestion[questionLanguage] == "") {
                     $('#question-word').text('no data please add data');
                 } else {
                     $('#question-word').text(currentQuestion[questionLanguage]);
@@ -154,5 +154,56 @@ $(document).ready(function () {
         }
     }
 
+    // CSRFトークンを取得
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+    // チェックボックスが変更されたときの処理
+    $('.word-checkbox').on('change', function() {
+        var checkbox = $(this);
+        var wordId = checkbox.data('id');
+        var isActive = checkbox.is(':checked') ? 1 : 0;
+
+        $.ajax({
+            url: '/languageQuiz/public/words/' + wordId + '/is_active',
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                is_active: isActive
+            },
+            success: function(response) {
+                console.log('Update successful:', response);
+            },
+            error: function(xhr) {
+                console.error('Update failed:', xhr.responseText);
+            }
+        });
+    });
+
     
 });
+
+// // activeチェックボックスのつけ外し
+// document.addEventListener('DOMContentLoaded', function () {
+//     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+//     document.querySelectorAll('.word-checkbox').forEach(function (checkbox) {
+//         checkbox.addEventListener('change', function () {
+//             const wordId = this.getAttribute('data-id');
+//             const isActive = this.checked ? 1 : 0;
+
+//             fetch(`/words/${wordId}/is_active`, {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'X-CSRF-TOKEN': csrfToken
+//                 },
+//                 body: JSON.stringify({ is_active: isActive })
+//             }).then(response => response.json())
+//               .then(data => {
+//                   console.log('Update successful:', data);
+//               }).catch(error => {
+//                   console.error('Error:', error);
+//               });
+//         });
+//     });
+// });

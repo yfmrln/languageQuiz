@@ -10,32 +10,32 @@
         <form action="{{ route('words.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="english">English</label>
-                <input type="text" name="english" class="form-control" required>
+                <label for="English">English</label>
+                <input type="text" name="English" class="form-control">
             </div>
             <div class="form-group">
-                <label for="spanish">Spanish</label>
-                <input type="text" name="spanish" class="form-control" required>
+                <label for="Spanish">Spanish</label>
+                <input type="text" name="Spanish" class="form-control">
             </div>
             <div class="form-group">
-                <label for="french">French</label>
-                <input type="text" name="french" class="form-control" required>
+                <label for="French">French</label>
+                <input type="text" name="French" class="form-control">
             </div>
             <div class="form-group">
-                <label for="german">German</label>
-                <input type="text" name="german" class="form-control" required>
+                <label for="German">German</label>
+                <input type="text" name="German" class="form-control">
             </div>
             <div class="form-group">
-                <label for="japanese">Japanese</label>
-                <input type="text" name="japanese" class="form-control" required>
+                <label for="Japanese">Japanese</label>
+                <input type="text" name="Japanese" class="form-control">
             </div>
             <div class="form-group">
-                <label for="serbian">Serbian</label>
-                <input type="text" name="serbian" class="form-control" required>
+                <label for="Serbian">Serbian</label>
+                <input type="text" name="Serbian" class="form-control">
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <input type="text" name="category" class="form-control" required>
+                <input type="text" name="category" class="form-control">
             </div>
             <!-- 戻るボタン -->
             <a href="{{ route('words.list') }}" class="btn btn-secondary">Back to List</a>

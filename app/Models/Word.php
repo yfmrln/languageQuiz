@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Word extends Model
 {
@@ -29,4 +30,14 @@ class Word extends Model
     protected $casts = [
         'is_active' => 'boolean',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // レコードが作成される前に自動的にuser_idを追加
+        static::creating(function ($word) {
+            $word->user_id = Auth::id();
+        });
+    }
 }

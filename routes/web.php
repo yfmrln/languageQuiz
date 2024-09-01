@@ -44,12 +44,16 @@ require __DIR__.'/auth.php';
 
 Route::get('/get-random-word', [WordController::class, 'getRandomWord']);
 
-Route::get('words/export', [WordController::class, 'export'])->name('words.export');
-Route::post('words/import', [WordController::class, 'import'])->name('words.import');
-
 Route::get('/words', [WordController::class, 'list'])->name('words.list');
 Route::get('/words/create', [WordController::class, 'create'])->name('words.create');
 Route::post('/words', [WordController::class, 'store'])->name('words.store');
 Route::get('/words/{word}/edit', [WordController::class, 'edit'])->name('words.edit');
 Route::put('/words/{word}', [WordController::class, 'update'])->name('words.update');
 Route::delete('/words/{word}', [WordController::class, 'destroy'])->name('words.destroy');
+
+// Route::get('words/export', [WordController::class, 'export'])->name('words.export');
+// Route::post('words/import', [WordController::class, 'import'])->name('words.import');
+Route::get('/words/export', [WordController::class, 'exportCsv'])->name('words.export');
+Route::post('/words/import', [WordController::class, 'importCsv'])->name('words.import');
+
+Route::post('/words/{id}/is_active', [WordController::class, 'is_active'])->name('words.is_active');
