@@ -11,12 +11,12 @@ use App\Exports\WordsExport;
 class WordController extends Controller
 {
 
-    public function index()
-    {
-        $words = Word::all();
+    // public function index()
+    // {
+    //     $words = Word::all();
 
-        return view('index', ['words' => $words]);
-    }
+    //     return view('index', ['words' => $words]);
+    // }
     
     public function getRandomWord(Request $request)
     {
@@ -55,6 +55,69 @@ class WordController extends Controller
         $request->validate(['csv_file' => 'required|file|mimes:csv,txt']);
         Excel::import(new WordsImport, $request->file('csv_file'));
         return redirect()->route('words.index')->with('success', 'Words Imported Successfully!');
+    }
+
+    public function list()
+    {
+        $words = Word::all(); // すべての単語を取得
+        // return view('words.list', compact('words'));
+        return view('list', compact('words'));
+    }
+
+    public function create()
+    {
+        // return view('words.create');
+        return view('create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'english' => 'required|string',
+            'spanish' => 'required|string',
+            'french' => 'required|string',
+            'german' => 'required|string',
+            'japanese' => 'required|string',
+            'serbian' => 'required|string',
+            'category' => 'required|string',
+        ]);
+
+        Word::create($validated);
+
+        // return redirect()->route('words.index')->with('success', 'Word created successfully.');
+        return redirect()->route('index')->with('success', 'Word created successfully.');
+    }
+
+    public function edit(Word $word)
+    {
+        // return view('words.edit', compact('word'));
+        return view('edit', compact('word'));
+    }
+
+    public function update(Request $request, Word $word)
+    {
+        $validated = $request->validate([
+            'english' => 'required|string',
+            'spanish' => 'required|string',
+            'french' => 'required|string',
+            'german' => 'required|string',
+            'japanese' => 'required|string',
+            'serbian' => 'required|string',
+            'category' => 'required|string',
+        ]);
+
+        $word->update($validated);
+
+        // return redirect()->route('words.index')->with('success', 'Word updated successfully.');
+        return redirect()->route('index')->with('success', 'Word updated successfully.');
+    }
+
+    public function destroy(Word $word)
+    {
+        $word->delete();
+
+        // return redirect()->route('words.index')->with('success', 'Word deleted successfully.');
+        return redirect()->route('index')->with('success', 'Word deleted successfully.');
     }
     
 

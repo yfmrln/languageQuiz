@@ -1,6 +1,12 @@
-@extends('layouts.app')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Quiz</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css')  }}">
+</head>
+<body>
     <div id="quiz-container">
         <h1>Language Quiz</h1>
         <label for="question-language">Question Language:</label>
@@ -33,5 +39,8 @@
 
         <button id="next-question">Next Question</button>
     </div>
-@endsection
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="{{ asset('/js/script.js')  }}"></script>
+</body>
+</html>
