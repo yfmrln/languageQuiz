@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('styles_list')
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/list.css') }}">
+@endpush
+
 @section('content')
     <div class="container">
         <h1>Add New Word</h1>
@@ -33,7 +37,9 @@
                 <label for="category">Category</label>
                 <input type="text" name="category" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-success">Save</button>
+            <!-- 戻るボタン -->
+            <a href="{{ route('words.list') }}" class="btn btn-secondary">Back to List</a>
+            <button type="submit" class="btn btn-success save_button">Save</button>
         </form>
     </div>
 @endsection

@@ -1,0 +1,27 @@
+
+.container {
+    background-color: #FFF;
+}
+.container h1 {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+form {
+    padding: 10px;
+}
+.save_button {
+    float: right;
+}
+
+/* スマホ画面 */
+@media (max-width: 480px) {
+
+    #answer-input {
+        width: 90%;
+    }
+    #check-answer {
+        margin-top: 30px;
+    }
+    
+}

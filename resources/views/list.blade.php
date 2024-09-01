@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('styles_list')
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/list.css') }}">
+@endpush
+
 @section('content')
     <div class="container">
         <h1>Word List</h1>
@@ -7,6 +11,7 @@
         <table class="table table-striped mt-4">
             <thead>
                 <tr>
+                    <th>no</th>
                     <th>English</th>
                     <th>Spanish</th>
                     <th>French</th>
@@ -18,8 +23,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($words as $word)
+                @foreach($words as $key=>$word)
                     <tr>
+                        <td>{{ $key+1 }}</td>
                         <td>{{ $word->English }}</td>
                         <td>{{ $word->Spanish }}</td>
                         <td>{{ $word->French }}</td>
