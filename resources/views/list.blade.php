@@ -51,17 +51,21 @@
             </tbody>
         </table>
 
-        <!-- CSVダウンロード -->
-        <a href="{{ route('words.export') }}" class="btn btn-success mb-3">Download CSV</a>
+        <div class="div_csv">
+            <span>・CSV for batch import</span><br>
+            <!-- CSVダウンロード -->
+            <a href="{{ route('words.export') }}" class="btn btn-outline-info btn-sm mb-4">Download CSV</a>
 
-        <!-- CSVアップロード -->
-        <form action="{{ route('words.import') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-                <label for="csv_file">Upload CSV</label>
-                <input type="file" name="csv_file" id="csv_file" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary mt-2">Upload</button>
-        </form>
+            <!-- CSVアップロード -->
+            <form action="{{ route('words.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <label for="csv_file">・Upload CSV</label>
+                <div class="form-group">
+                    <input type="file" name="csv_file" id="csv_file" class="form-control" required>
+                    <button type="submit" class="btn btn-outline-success btn-sm">Upload</button>
+                </div>
+            </form>
+        </div>
+
     </div>
 @endsection

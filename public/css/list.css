@@ -14,6 +14,23 @@ form {
     float: right;
 }
 
+.div_csv {
+    padding: 10px;
+}
+
+.div_csv form {
+    padding: 0;
+}
+
+.form-group {
+    display: flex;
+}
+
+#csv_file {
+    width: auto;
+    font-size: 12px;
+}
+
 /* スマホ画面 */
 @media (max-width: 480px) {
 
