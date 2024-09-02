@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('Serbian')->nullable();
             $table->boolean('is_active')->default(true);
             $table->string('category')->nullable(); // カテゴリが必要な場合
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
