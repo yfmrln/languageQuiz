@@ -85,6 +85,47 @@ button {
     gap: 10px;
 }
 
+/* クイズ表示形式変更スイッチ */
+.switch-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#order-switch {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    -webkit-appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    border-radius: 20px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+#order-switch:checked {
+    background: #4caf50;
+}
+
+#order-switch:before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    background: white;
+    transition: 0.3s;
+}
+
+#order-switch:checked:before {
+    transform: translateX(20px);
+}
+
+
+
 /* スマホ画面 */
 @media (max-width: 480px) {
 

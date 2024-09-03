@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Word;
+use App\Models\UserSetting;
 use Illuminate\Http\Request;
 // use PhpOffice\PhpSpreadsheet\IOFactory;
 use Illuminate\Support\Facades\Auth;
@@ -13,17 +14,25 @@ use Maatwebsite\Excel\Facades\Excel;
 class WordController extends Controller
 {
 
-    // public function index()
-    // {
-    //     $words = Word::all();
+    public function index()
+    {
 
-    //     return view('index', ['words' => $words]);
-    // }
+        $user = Auth::user();
+        $userSetting = UserSetting::where('user_id', $user->id)->first();
+        // デフォルトの言語を設定
+        $defaultQuestionLanguage = $userSetting->default_question_language;
+        $defaultAnswerLanguage = $userSetting->default_answer_language;
+
+        return view('index', compact('defaultQuestionLanguage', 'defaultAnswerLanguage'));
+    }
     
     public function getRandomWord(Request $request)
     {
+
         $questionLanguage = $request->get('questionLanguage');
         $answerLanguage = $request->get('answerLanguage');
+        $orderType = $request->get('orderType', 'random');
+        // $userId = Auth::id();
 
         // // ランダムに1つのアクティブな単語を取得
         // $words = Word::where('is_active', true)
@@ -39,6 +48,20 @@ class WordController extends Controller
         ->where('user_id', Auth::id())
         ->inRandomOrder()
         ->first();
+
+        // if ($orderType == 'random') {
+        //     $word = $query->inRandomOrder()->first();
+        // } else {
+        //     // 順番に出題するため、セッションでトラッキング
+        //     $lastWordId = session()->get('last_word_id');
+        //     if ($lastWordId) {
+        //         $word = $query->where('id', '<', $lastWordId)->orderBy('id', 'desc')->first();
+        //     }
+        //     if (!$word) {
+        //         // 最後まで行ったら最初に戻る
+        //         $word = $query->orderBy('id', 'desc')->first();
+        //     }
+        // }
 
         if ($word) {
             return response()->json($word);

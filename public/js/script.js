@@ -8,6 +8,8 @@ $(document).ready(function () {
     function loadNextQuestion() {
         const questionLanguage = $('#question-language').val();
         const answerLanguage = $('#answer-language').val();
+        const orderType = $('#order-switch').is(':checked') ? 'random' : 'sequential';
+
 
         // AJAXリクエストでランダムな問題を取得
         $.ajax({
@@ -15,7 +17,8 @@ $(document).ready(function () {
             method: 'GET',
             data: {
                 questionLanguage: questionLanguage,
-                answerLanguage: answerLanguage
+                answerLanguage: answerLanguage,
+                orderType: orderType
             },
             success: function (data) {
                 currentQuestion = data;
@@ -38,13 +41,16 @@ $(document).ready(function () {
     $('#question-language').change(function() {
         var questionLanguage = $(this).val();
         var answerLanguage = $('#answer-language').val(); // 答えの言語も必要ならば
+        var orderType = $('#order-switch').is(':checked') ? 'random' : 'sequential';
+
 
         $.ajax({
             url: '/languageQuiz/public/get-random-word',
             type: 'GET',
             data: {
                 questionLanguage: questionLanguage,
-                answerLanguage: answerLanguage
+                answerLanguage: answerLanguage,
+                orderType: orderType
             },
             // success: function(response) {
             //     $('#word-display').text(response[questionLanguage]); // 選択された言語に基づいて単語を表示
@@ -66,6 +72,17 @@ $(document).ready(function () {
         });
     });
 
+    // 言語や順番の変更時にも再読み込み
+    $('#order-type').change(function() {
+        loadNextQuestion();
+    });
+
+
+    // // 言語や順番の変更時にも再読み込み
+    // $('#question-language, #answer-language, #order-type').change(function() {
+    //     loadNextQuestion();
+    // });
+
     // 音声再生
     // $('#play-audio').click(function() {
     //     var audioUrl = $(this).data('audio');
@@ -85,24 +102,24 @@ $(document).ready(function () {
         speakWord(text, getLanguageCode(lang));
     });
 
-    // 解答ボタンを押したとき
-    $('#check-answer').click(function () {
-        const userAnswer = $('#answer-input').val().trim();
-        const answerLanguage = $('#answer-language').val();
+    // // 解答ボタンを押したとき
+    // $('#check-answer').click(function () {
+    //     const userAnswer = $('#answer-input').val().trim();
+    //     const answerLanguage = $('#answer-language').val();
 
-        if (userAnswer.toLowerCase() === currentQuestion[answerLanguage].toLowerCase()) {
-            $('#result').text('Correct!').css('color', 'green');
-            setTimeout(loadNextQuestion, 1000);
-        } else {
-            attempts++;
-            $('#result').text('Incorrect!').css('color', 'red');
+    //     if (userAnswer.toLowerCase() === currentQuestion[answerLanguage].toLowerCase()) {
+    //         $('#result').text('Correct!').css('color', 'green');
+    //         setTimeout(loadNextQuestion, 1000);
+    //     } else {
+    //         attempts++;
+    //         $('#result').text('Incorrect!').css('color', 'red');
 
-            if (attempts >= 3) {
-                $('#result').text(`Incorrect! The correct answer is: ${currentQuestion[answerLanguage]}`).css('color', 'red');
-                setTimeout(loadNextQuestion, 2000);
-            }
-        }
-    });
+    //         if (attempts >= 3) {
+    //             $('#result').text(`Incorrect! The correct answer is: ${currentQuestion[answerLanguage]}`).css('color', 'red');
+    //             setTimeout(loadNextQuestion, 2000);
+    //         }
+    //     }
+    // });
 
     //　次の問題を押したとき
     $('#next-question').click(loadNextQuestion);
@@ -121,6 +138,7 @@ $(document).ready(function () {
         speechSynthesis.speak(utterance);
     }
     
+    // 解答ボタンを押したとき
     $('#check-answer').click(function () {
         const userAnswer = $('#answer-input').val().trim();
         const answerLanguage = $('#answer-language').val();
