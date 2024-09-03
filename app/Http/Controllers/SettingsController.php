@@ -11,7 +11,8 @@ class SettingsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $languages = ['English', 'Spanish', 'French', 'German', 'Japanese', 'Serbian'];
+        $languages = ['English', 'Spanish', 'French', 'German', 'Japanese', 'Serbian',
+        'Dutch', 'Japanese_hiragana', 'Japanese_romaji'];
 
         $userSetting = UserSetting::firstOrCreate(
             ['user_id' => $user->id],

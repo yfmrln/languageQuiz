@@ -34,6 +34,18 @@
                 <input type="text" name="Serbian" class="form-control">
             </div>
             <div class="form-group">
+                <label for="Dutch">Dutch</label>
+                <input type="text" name="Dutch" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="Japanese_hiragana">Japanese(Hiragana)</label>
+                <input type="text" name="Japanese_hiragana" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="Japanese_romaji">Japanese(Romaji)</label>
+                <input type="text" name="Japanese_romaji" class="form-control">
+            </div>
+            <div class="form-group">
                 <label for="category">Category</label>
                 <input type="text" name="category" class="form-control">
             </div>

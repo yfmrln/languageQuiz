@@ -21,6 +21,9 @@ class Word extends Model
         'German', 
         'Japanese', 
         'Serbian', 
+        'Dutch', 
+        'Japanese_hiragana', 
+        'Japanese_romaji', 
         'is_active', 
         'category', 
         'user_id'

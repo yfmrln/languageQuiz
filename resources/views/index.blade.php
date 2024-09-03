@@ -11,6 +11,9 @@
             <option value="German" {{ $defaultQuestionLanguage == 'German' ? 'selected' : '' }}>German</option>
             <option value="Japanese" {{ $defaultQuestionLanguage == 'Japanese' ? 'selected' : '' }}>Japanese</option>
             <option value="Serbian" {{ $defaultQuestionLanguage == 'Serbian' ? 'selected' : '' }}>Serbian</option>
+            <option value="Dutch" {{ $defaultQuestionLanguage == 'Dutch' ? 'selected' : '' }}>Dutch</option> <!-- オランダ語 -->
+            <option value="Japanese_hiragana" {{ $defaultQuestionLanguage == 'Japanese_hiragana' ? 'selected' : '' }}>Japanese Hiragana</option> <!-- 日本語ひらがな -->
+            <option value="Japanese_romaji" {{ $defaultQuestionLanguage == 'Japanese_romaji' ? 'selected' : '' }}>Japanese Romaji</option> <!-- 日本語ローマ字 -->
         </select>
 
         <label for="answer-language">Answer Language:</label>
@@ -21,6 +24,9 @@
             <option value="German" {{ $defaultAnswerLanguage == 'German' ? 'selected' : '' }}>German</option>
             <option value="Japanese" {{ $defaultAnswerLanguage == 'Japanese' ? 'selected' : '' }}>Japanese</option>
             <option value="Serbian" {{ $defaultAnswerLanguage == 'Serbian' ? 'selected' : '' }}>Serbian</option>
+            <option value="Dutch" {{ $defaultAnswerLanguage == 'Dutch' ? 'selected' : '' }}>Dutch</option> <!-- オランダ語 -->
+            <option value="Japanese_hiragana" {{ $defaultAnswerLanguage == 'Japanese_hiragana' ? 'selected' : '' }}>Japanese Hiragana</option> <!-- 日本語ひらがな -->
+            <option value="Japanese_romaji" {{ $defaultAnswerLanguage == 'Japanese_romaji' ? 'selected' : '' }}>Japanese Romaji</option> <!-- 日本語ローマ字 -->
         </select>
 
         <!-- <div class="switch-container">

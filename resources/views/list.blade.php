@@ -5,11 +5,11 @@
 @endpush
 
 @section('content')
-    <div class="container">
+    <div id="word-list-container" class="container" >
         <h1>Word List</h1>
 
         <a href="{{ route('words.create') }}" class="btn btn-primary">Add New Word</a>
-        <table class="table table-striped mt-4">
+        <table id="word-list-table" class="table table-striped mt-4">
             <thead>
                 <tr>
                     <th>no</th>
@@ -20,6 +20,9 @@
                     <th>German</th>
                     <th>Japanese</th>
                     <th>Serbian</th>
+                    <th>Dutch</th>
+                    <th>Japanese<br>(Hiragana)</th>
+                    <th>Japanese<br>(Romaji)</th>
                     <th>Category</th>
                     <th>Actions</th>
                 </tr>
@@ -37,6 +40,9 @@
                         <td>{{ $word->German }}</td>
                         <td>{{ $word->Japanese }}</td>
                         <td>{{ $word->Serbian }}</td>
+                        <td>{{ $word->Dutch }}</td>
+                        <td>{{ $word->Japanese_hiragana }}</td>
+                        <td>{{ $word->Japanese_romaji }}</td>
                         <td>{{ $word->category }}</td>
                         <td>
                             <a href="{{ route('words.edit', $word) }}" class="btn btn-warning btn-sm">Edit</a>

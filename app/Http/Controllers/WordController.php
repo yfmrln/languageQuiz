@@ -97,13 +97,16 @@ class WordController extends Controller
         // ]);
 
         $validated = $request->validate([
-            'English'  => 'string',
-            'Spanish'  => 'string',
-            'French'   => 'string',
-            'German'   => 'string',
-            'Japanese' => 'string',
-            'Serbian'  => 'string',
-            'category' => 'string',
+            'English'           => 'nullable|string',
+            'Spanish'           => 'nullable|string',
+            'French'            => 'nullable|string',
+            'German'            => 'nullable|string',
+            'Japanese'          => 'nullable|string',
+            'Serbian'           => 'nullable|string',
+            'Dutch'             => 'nullable|string',
+            'Japanese_hiragana' => 'nullable|string',
+            'Japanese_romaji'   => 'nullable|string',
+            'category'          => 'string',
         ]);
         
 
@@ -132,14 +135,18 @@ class WordController extends Controller
         // ]);
 
         $validated = $request->validate([
-            'English'  => 'string',
-            'Spanish'  => 'string',
-            'French'   => 'string',
-            'German'   => 'string',
-            'Japanese' => 'string',
-            'Serbian'  => 'string',
-            'category' => 'string',
+            'English'           => 'nullable|string',
+            'Spanish'           => 'nullable|string',
+            'French'            => 'nullable|string',
+            'German'            => 'nullable|string',
+            'Japanese'          => 'nullable|string',
+            'Serbian'           => 'nullable|string',
+            'Dutch'             => 'nullable|string',
+            'Japanese_hiragana' => 'nullable|string',
+            'Japanese_romaji'   => 'nullable|string',
+            'category'          => 'string',
         ]);
+        
         
 
         $word->update($validated);
@@ -174,7 +181,7 @@ class WordController extends Controller
             $words = Word::where('user_id', Auth::id())->get();
     
             // ヘッダー
-            $csvData = "English,Spanish,French,German,Japanese,Serbian,Category\n";
+            $csvData = "English,Spanish,French,German,Japanese,Serbian,Dutch,Japanese_hiragana,Japanese_romaji,Category\n";
     
             // // データ行
             // foreach ($words as $word) {
@@ -202,15 +209,18 @@ class WordController extends Controller
                 // 各行を処理
                 while (($data = fgetcsv($fileHandle, 1000, ',')) !== FALSE) {
                     Word::create([
-                        'English' => !empty($data[0]) ? $data[0] : null,
-                        'Spanish' => !empty($data[1]) ? $data[1] : null,
-                        'French' => !empty($data[2]) ? $data[2] : null,
-                        'German' => !empty($data[3]) ? $data[3] : null,
-                        'Japanese' => !empty($data[4]) ? $data[4] : null,
-                        'Serbian' => !empty($data[5]) ? $data[5] : null,
-                        'category' => !empty($data[6]) ? $data[6] : null,
-                        'user_id' => Auth::id(),
-                        'is_active' => true,
+                        'English'           => !empty($data[0]) ? $data[0] : null,
+                        'Spanish'           => !empty($data[1]) ? $data[1] : null,
+                        'French'            => !empty($data[2]) ? $data[2] : null,
+                        'German'            => !empty($data[3]) ? $data[3] : null,
+                        'Japanese'          => !empty($data[4]) ? $data[4] : null,
+                        'Serbian'           => !empty($data[5]) ? $data[5] : null,
+                        'Dutch'             => !empty($data[6]) ? $data[6] : null,
+                        'Japanese_hiragana' => !empty($data[7]) ? $data[7] : null,
+                        'Japanese_romaji'   => !empty($data[8]) ? $data[8] : null,
+                        'category'          => !empty($data[9]) ? $data[9] : null,
+                        'user_id'           => Auth::id(),
+                        'is_active'         => true,
                     ]);
                 }
     

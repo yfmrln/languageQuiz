@@ -168,6 +168,9 @@ $(document).ready(function () {
             case 'German': return 'de';
             case 'Japanese': return 'ja';
             case 'Serbian': return 'sr';
+            case 'Dutch': return 'nl';
+            case 'Japanese_hiragana': return 'ja';
+            case 'Japanese_romaji': return 'ja';
             default: return 'en';
         }
     }

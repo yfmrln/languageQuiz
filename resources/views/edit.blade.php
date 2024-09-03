@@ -35,6 +35,18 @@
                 <input type="text" name="Serbian" class="form-control" value="{{ $word->Serbian }}">
             </div>
             <div class="form-group">
+                <label for="Dutch">Dutch</label>
+                <input type="text" name="Dutch" class="form-control" value="{{ $word->Dutch }}">
+            </div>
+            <div class="form-group">
+                <label for="Japanese_hiragana">Japanese(Hiragana)</label>
+                <input type="text" name="Japanese_hiragana" class="form-control" value="{{ $word->Japanese_hiragana }}">
+            </div>
+            <div class="form-group">
+                <label for="Japanese_romaji">Japanese(Romaji)</label>
+                <input type="text" name="Japanese_romaji" class="form-control" value="{{ $word->Japanese_romaji }}">
+            </div>
+            <div class="form-group">
                 <label for="category">Category</label>
                 <input type="text" name="category" class="form-control" value="{{ $word->category }}">
             </div>

@@ -31,6 +31,30 @@ form {
     font-size: 12px;
 }
 
+/* テーブルのCSS 修正 */
+#word-list-container {
+    max-height: 800px;
+    overflow-y: auto;
+    max-width: 90%;
+    overflow: auto;
+}
+
+#word-list-table {
+    width: 100%; /* テーブルがコンテナの幅に合わせる */
+    border-collapse: collapse; /* テーブルのセルの間隔をなくす */
+}
+
+#word-list-table th, #word-list-table td {
+    border: 1px solid #ddd; /* セルの境界線 */
+    padding: 5px; /* セルの内側のスペース */
+    text-align: left; /* テキストの配置 */
+}
+
+#word-list-table th {
+    background-color: #f2f2f2; /* ヘッダーの背景色 */
+}
+
+
 /* スマホ画面 */
 @media (max-width: 480px) {
 
