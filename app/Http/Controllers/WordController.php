@@ -19,9 +19,17 @@ class WordController extends Controller
 
         $user = Auth::user();
         $userSetting = UserSetting::where('user_id', $user->id)->first();
+        
         // デフォルトの言語を設定
-        $defaultQuestionLanguage = $userSetting->default_question_language;
-        $defaultAnswerLanguage = $userSetting->default_answer_language;
+        if ($userSetting === null) {
+            $defaultQuestionLanguage = "English";
+            $defaultAnswerLanguage = "English";
+        } else {
+            $defaultQuestionLanguage = $userSetting->default_question_language ?? "English";
+            $defaultAnswerLanguage = $userSetting->default_answer_language ?? "English";
+        }
+
+
 
         return view('index', compact('defaultQuestionLanguage', 'defaultAnswerLanguage'));
     }

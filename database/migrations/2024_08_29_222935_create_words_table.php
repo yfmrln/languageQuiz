@@ -21,17 +21,19 @@ return new class extends Migration
             $table->string('German')->nullable();
             $table->string('Japanese')->nullable();
             $table->string('Serbian')->nullable();
-            $table->string('Dutch')->nullable(); // オランダ語
-            $table->string('Japanese_hiragana')->nullable(); // 日本語ひらがな
-            $table->string('Japanese_romaji')->nullable(); // 日本語ローマ字
+            $table->string('Dutch')->nullable(); 
+            $table->string('Japanese_hiragana')->nullable();
+            $table->string('Japanese_romaji')->nullable();
             $table->boolean('is_active')->default(true);
-            $table->string('category')->nullable(); // カテゴリが必要な場合
-            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('category')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
 
+    /*   $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); */
+
+    
     /**
      * Reverse the migrations.
      *
